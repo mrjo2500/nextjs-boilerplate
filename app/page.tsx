@@ -46,7 +46,6 @@ export default function EnigmaCompleteSystem() {
       alert("❌ رمز التأكيد غير صحيح، يرجى المحاولة مرة أخرى.");
     }
   };
-
   // =========================================================
   // [المرحلة الرابعة والأخيرة]: لوحة التحكم المركزية الـ VIP (LEVEL 51)
   // =========================================================
@@ -187,20 +186,29 @@ export default function EnigmaCompleteSystem() {
         </div>
 
         <div className="w-full h-12 bg-black border border-zinc-800 rounded-xl font-mono text-lg tracking-widest flex items-center justify-center text-zinc-300">
-{inputCode || أدخل الشفرة السرية...}
-{["i", "G", "M", "E", "A", "N"].map((letter, index) => (
-<button
-key={index}
-onClick={() => handleLetterClick(letter)}
-className="py-3 border border-zinc-800/80 rounded-xl bg-zinc-950/40 font-mono text-base font-bold text-zinc-300 hover:text-white transition-all active:scale-95"
->
-{letter}
+          {inputCode || <span className="text-zinc-700 text-xs font-sans">أدخل الشفرة السرية...</span>}
+        </div>
 
-))}
-<button
-onClick={() => setIsUnlocked(true)}
-className="w-full py-3 rounded-xl border border-zinc-800 bg-black text-xs font-medium text-zinc-400 hover:text-white transition-all"
->
-[ تخطي البوابة سرياً / Bypass ]
-);
+        <div className="grid grid-cols-3 gap-3 my-4">
+          {["i", "G", "M", "E", "A", "N"].map((letter, index) => (
+            <button
+              key={index}
+              onClick={() => handleLetterClick(letter)}
+              className="py-3 border border-zinc-800/80 rounded-xl bg-zinc-950/40 font-mono text-base font-bold text-zinc-300 hover:text-white transition-all active:scale-95"
+            >
+              {letter}
+            </button>
+          ))}
+        </div>
+
+        <button 
+          onClick={() => setIsUnlocked(true)} 
+          className="w-full py-3 rounded-xl border border-zinc-800 bg-black text-xs font-medium text-zinc-400 hover:text-white transition-all"
+        >
+          [ تخطي البوابة سرياً / Bypass ]
+        </button>
+
+      </div>
+    </div>
+  );
 }
